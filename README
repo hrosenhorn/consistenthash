@@ -1,0 +1,16 @@
+Consistent hash
+===============
+
+Small implementation of Consistent Hashing
+Inspiration taken from the Ketama and Concurrence implementation
+
+If you wish to know more about the topic here is some good reading
+
+http://www.last.fm/user/RJ/journal/2007/04/10/rz_libketama_-_a_consistent_hashing_algo_for_memcache_clients
+http://en.wikipedia.org/wiki/Consistent_hashing
+
+
+License
+-------
+
+Open-source licensed under the MIT license (see _LICENSE_ file for details).
