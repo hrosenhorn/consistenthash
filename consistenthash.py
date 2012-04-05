@@ -13,7 +13,7 @@ import hashlib
 import bisect
 import logging
 
-logger = logging.getLogger("continuum")
+logger = logging.getLogger("consistenthash")
 
 class ConsistentHash(object):
     def __init__(self, nodes = []):
