@@ -71,7 +71,6 @@ class ConsistentHash(object):
         # Store the amount of virtual points this server has for later removal
         self.nodes[node] = vpoints
 
-
         logging.debug("Added node %s" % str(node))
         if rebuild:
             self._rebuild()
@@ -83,7 +82,6 @@ class ConsistentHash(object):
         @param node: A string representing your node
         """
 
-        node = str(node)
         vpoints = self.nodes.get(node, None)
 
         if not vpoints:
@@ -98,12 +96,15 @@ class ConsistentHash(object):
     def get_node(self, key):
         point = self._point_from_key(key)
 
+        if not self.continuum:
+            raise Exception("No nodes available")
+
         # Find the index for this node
         index = bisect.bisect_right(self.continuum, (point, ()))
         if index < len(self.continuum):
-            return self.continuum[index]
+            return self.continuum[index][1]
         else:
-            return self.continuum[0]
+            return self.continuum[0][1]
 
     def _point_from_key(self, key):
         tmp = hashlib.md5(str(key)).hexdigest()
